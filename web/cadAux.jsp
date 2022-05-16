@@ -29,14 +29,14 @@
                         <button type="button" onClick="requisitar('voltarCliente')" id="btnVoltarCliente" style="display: none;">Voltar</button>-->
 
             <% if (!lista.isEmpty()) {%>
-            <table class="centro tbAux">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Descrição</th>
-                        <th>Ativo</th>
-                        <th>Data</th>
-                        <th>Hora</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Ativo</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Hora</th>
                     </tr>
                 </thead>
                 <%
@@ -45,11 +45,11 @@
 
                 <tbody>
                     <tr>
-                        <td><%= (lista.get(i).getIdTipo())%></td>
-                        <td><%= (lista.get(i).getDescricao())%></td>
-                        <td><%= (lista.get(i).getAtivo())%></td>
-                        <td><%= (lista.get(i).getDataRegistro())%></td>
-                        <td><%= (lista.get(i).getHoraRegistro())%></td>
+                        <td scope="row"><%= (lista.get(i).getIdTipo())%></td>
+                        <td scope="row"><%= (lista.get(i).getDescricao())%></td>
+                        <td scope="row"><%= (lista.get(i).getAtivo())%></td>
+                        <td scope="row"><%= (lista.get(i).getDataRegistro())%></td>
+                        <td scope="row"><%= (lista.get(i).getHoraRegistro())%></td>
                     </tr>
                 </tbody>
                 <%
@@ -57,16 +57,16 @@
                 %>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
-                        <th>Descrição</th>
-                        <th>Ativo</th>
-                        <th>Data</th>
-                        <th>Hora</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Ativo</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Hora</th>
                     </tr>
                 </tfoot>
             </table>
             <% } else { %>
-            <h3 class="tbCliente" style="color: #1c3a29; font-size: 55px; text-align: center;">Não Há Cliente Cadastrado</h3>
+            <h3 class="text-center" style="color: #1c3a29; font-size: 55px;">Não Há Cliente Cadastrado</h3>
             <% }%>
             <!--            <form id="formCliente" style="display: none;" class="centro">
                             <label>Nome:</label>

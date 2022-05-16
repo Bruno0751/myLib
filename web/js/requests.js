@@ -9,10 +9,9 @@ function requisitar(valor) {
         window.location.href = valor;
     }
     if (valor === "insertCliente") {
-//        alert($("#txtNome"));
         let btnInserCliente = document.querySelector("button#btnInserCliente");
         let btnVoltarCliente = document.querySelector("button#btnVoltarCliente");
-        let tbCliente = document.querySelector(".tbCliente");
+        let tbCliente = document.querySelector(".table");
         let formCliente = document.querySelector("form#formCliente");
 
         btnInserCliente.setAttribute("style", "display: none;");
@@ -25,7 +24,6 @@ function requisitar(valor) {
     }
     if (valor === "sair") {
         let link = window.location;
-        console.log(link);
-        alert(link.search);
+        link.href = "index.jsp";
     }
 }

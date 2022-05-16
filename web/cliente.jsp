@@ -34,16 +34,16 @@
             <h2 style="display: none;">Cliente</h2>
 
             <% if (!lista.isEmpty()) {%>
-            <table class="centro tbCliente">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Idade</th>
-                        <th>Email</th>
-                        <th>Tipo</th>
-                        <th>Data</th>
-                        <th>Hora</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Idade</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Data</th>
+                        <th scope="col"s>Hora</th>
                     </tr>
                 </thead>
                 <%
@@ -52,13 +52,13 @@
 
                 <tbody>
                     <tr>
-                        <td><%= (lista.get(i).getIdCliente())%></td>
-                        <td><%= (lista.get(i).getNome())%></td>
-                        <td><%= (lista.get(i).getIdade())%></td>
-                        <td><%= (lista.get(i).getEnviarEmail())%></td>
-                        <td><%= (lista.get(i).getTipo())%></td>
-                        <td><%= (lista.get(i).getDataRegistro())%></td>
-                        <td><%= (lista.get(i).getHoraRegistro())%></td>
+                        <td scope="row"><%= (lista.get(i).getIdCliente())%></td>
+                        <td scope="row"><%= (lista.get(i).getNome())%></td>
+                        <td scope="row"><%= (lista.get(i).getIdade())%></td>
+                        <td scope="row"><%= (lista.get(i).getEnviarEmail())%></td>
+                        <td scope="row"><%= (lista.get(i).getTipo())%></td>
+                        <td scope="row"><%= (lista.get(i).getDataRegistro())%></td>
+                        <td scope="row"><%= (lista.get(i).getHoraRegistro())%></td>
                     </tr>
                 </tbody>
                 <%
