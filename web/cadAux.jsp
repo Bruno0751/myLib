@@ -77,8 +77,7 @@
                             </div>
                         </form>-->
         </section>
-        <footer>
-        </footer>
+        <script type="text/javascript" src="js/footer.js"></script>
         <!--<script type="text/javascript" src="js/requests.js"></script>-->
     </body>
 </html>

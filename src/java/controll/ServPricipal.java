@@ -47,6 +47,7 @@ public class ServPricipal extends HttpServlet {
                 case "/myLib/prj":
                 case "/myLib/msc":
                 case "/myLib/minhasMusicas":
+                case "/myLib/money":
                     this.requisitar(request);
                     response.sendRedirect("index.jsp");
                     break;
@@ -128,6 +129,9 @@ public class ServPricipal extends HttpServlet {
     private void requisitar(HttpServletRequest request) throws IOException {
         if (request.getRequestURI().equals("/myLib/prj")) {
             Desktop.getDesktop().open(new File("D:\\PrjDesktopJava\\myLib"));
+        }
+        if (request.getRequestURI().equals("/myLib/money")) {
+            Desktop.getDesktop().open(new File("D:\\Documents\\MONEY"));
         }
         if (request.getRequestURI().equals("/myLib/msc")) {
             Desktop.getDesktop().open(new File("D:\\Music"));
