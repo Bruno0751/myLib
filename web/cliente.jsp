@@ -4,6 +4,7 @@
     Author     : Bruno
 --%>
 
+<%@page import="java.net.InetAddress"%>
 <%@page import="dao.AuxDao"%>
 <%@page import="model.AuxModel"%>
 <%@page import="java.util.List"%>
@@ -11,8 +12,15 @@
 <%@page import="model.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    List<Cliente> lista = ClienteDao.findClente();
-    List<AuxModel> listaTpo = AuxDao.findAux();
+    String ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
+    boolean casa = false;
+    List<Cliente> lista = null;
+    List<AuxModel> listaTpo = null;
+    if (ipDaMaquina.contains("192.168.")) {
+        lista = ClienteDao.findClente();
+        listaTpo = AuxDao.findAux();
+        casa = true;
+    }
 
 %>
 <!DOCTYPE html>
@@ -45,6 +53,7 @@
         <section>
             <h2 style="display: none;">Cliente</h2>
 
+            <% if (casa) { %>
             <% if (!lista.isEmpty()) {%>
             <table class="table">
                 <thead>
@@ -134,6 +143,7 @@
                     <input type="reset" class="border border-secondary rounded-pill" value="Limpar">
                 </div>
             </form>
+            <% }%>
         </section>
         <script type="text/javascript" src="js/footer.js"></script>
         <script type="text/javascript" src="js/requests.js"></script>

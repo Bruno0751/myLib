@@ -17,7 +17,6 @@ public class ConexaoMysqlBruno {
 
     //private static final String DRIVE = "com.mysql.jdbc.Driver";
     private static final String DRIVE = "com.mysql.cj.jdbc.Driver"; //8.0.22
-
     //private static final String URL = "jdbc:mysql://10.1.0.201:3306/test?useTimezone=true&serverTimezone=UTC";
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/servlet?useTimezone=true&serverTimezone=UTC";
     private static final String USER = "root";
@@ -33,9 +32,11 @@ public class ConexaoMysqlBruno {
                 System.out.println("ConexaoMysqlBruno");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "erro de conexão\n" + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+            if (ipDaMaquina.contains("192.168.")) {
+                JOptionPane.showMessageDialog(null, "erro de conexão\n" + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+            System.out.println("erro de conexão\n" + e.getMessage());
             e.printStackTrace();
-            System.exit(0);
         } finally {
             return connection;
         }

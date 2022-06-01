@@ -4,12 +4,19 @@
     Author     : Bruno
 --%>
 
+<%@page import="java.net.InetAddress"%>
 <%@page import="dao.AuxDao"%>
 <%@page import="model.AuxModel"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    List<AuxModel> lista = AuxDao.findAux();
+    String ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
+    List<AuxModel> lista = null;
+    boolean casa = false;
+    if (ipDaMaquina.contains("192.168.")) {
+        lista = AuxDao.findAux();
+        casa = true;
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +34,7 @@
 
             <!--            <button type="button" onClick="requisitar('insertCliente')" id="btnInserCliente">Cadastrar Cliente</button>
                         <button type="button" onClick="requisitar('voltarCliente')" id="btnVoltarCliente" style="display: none;">Voltar</button>-->
-
+            <% if (casa) {  %>
             <% if (!lista.isEmpty()) {%>
             <table class="table">
                 <thead>
@@ -68,6 +75,7 @@
             <% } else { %>
             <h3 class="text-center" style="color: #1c3a29; font-size: 55px;">Não Há Cliente Cadastrado</h3>
             <% }%>
+            <% }%>
             <!--            <form id="formCliente" style="display: none;" class="centro">
                             <label>Nome:</label>
                             <input type="text" name="txtNome" placeholder="Nome" id="nomeCliente">
@@ -78,6 +86,6 @@
                         </form>-->
         </section>
         <script type="text/javascript" src="js/footer.js"></script>
-        <!--<script type="text/javascript" src="js/requests.js"></script>-->
+        <script type="text/javascript" src="js/requests.js"></script>
     </body>
 </html>

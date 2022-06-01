@@ -1,13 +1,16 @@
 function requisitar(valor) {
     if (valor === "prj") {
+        window.location.href = valor;
     }
     if (valor === "msc") {
+        window.location.href = valor;
     }
     if (valor === "minhasMusicas") {
+        window.location.href = valor;
     }
     if (valor === "money") {
+        window.location.href = valor;
     }
-    window.location.href = valor;
     if (valor === "insertCliente") {
         let btnInserCliente = document.querySelector("button#btnInserCliente");
         let btnVoltarCliente = document.querySelector("button#btnVoltarCliente");

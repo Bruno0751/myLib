@@ -11,11 +11,10 @@
     acesso = request.getParameter("acesso");
     boolean casa = false, autorizado = false;
     String ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
-    String nomeDaMaquina = InetAddress.getLocalHost().getHostName();
+//    String nomeDaMaquina = InetAddress.getLocalHost().getHostName();
     if (ipDaMaquina.contains("192.168.")) {
         casa = true;
     }
-    System.out.println("acesso - " + acesso);
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,7 +31,7 @@
         </header>
 
         <script type="text/javascript" src="js/menu.js"></script>
-        <button type="button" onClick="carregarPagina('bootstrap')" class="btn btn-link">Bootstrap</button>
+        <button type="button" onClick="carregarPagina('vazio')" class="btn btn-link">Bootstrap</button>
 
         <hr>
 
@@ -101,18 +100,13 @@
                 <a href="https://www.cinemark.com.br/filme/doutor-estranho-no-multiverso-da-loucura?utm_source=search&utm_medium=ga&utm_campaign=doutor_estranho2&utm_id=vzz_28149https://www.cinemark.com.br/filme/doutor-estranho-no-multiverso-da-loucura?utm_source=search&utm_medium=ga&utm_campaign=doutor_estranho2&utm_id=vzz_281491854759516&utm_term=trf1854759516&utm_term=trf&gclid=Cj0KCQjwsdiTBhD5ARIsAIpW8CJaFe586WI06ws5IP7OW9pz9xWptOr3-JgqfJqYQN2DAsnxRkYtunAaAuNGEALw_wcB" target="_blank">
                     <img src="images/cinemark.png" alt="CINEMARK" title="CINEMARK" class="g-col-2" width="10%" height="100px;">
                 </a>
+                <a href="https://github.com/" target="_blank">
+                    <img src="images/gitHub.png" alt="GIT HUB" title="GIT HUB" class="g-col-2" width="10%" height="100px;">
+                </a>
             </div>
 
             <hr>
 
-            <div class="grid">
-                <a href="https://web.whatsapp.com/" target="_blank">
-                    <div class="g-col-6">Whats App</div>
-                </a>
-                <a href="hhttps://ead.qi.edu.br/login/index.php" target="_blank">
-                    <div class="g-col-6">Moodel</div>
-                </a>
-            </div>
             <%}%>
 
         </section>
