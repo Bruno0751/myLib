@@ -17,8 +17,8 @@
     List<Cliente> lista = null;
     List<AuxModel> listaTpo = null;
     if (ipDaMaquina.contains("192.168.")) {
-        lista = ClienteDao.findClente();
-        listaTpo = AuxDao.findAux();
+        lista = ClienteDao.findClente(ipDaMaquina);
+        listaTpo = AuxDao.findAux(ipDaMaquina);
         casa = true;
     }
 
@@ -100,8 +100,8 @@
             <% } else { %>
             <h3 class="tbCliente" style="color: #1c3a29; font-size: 55px; text-align: center;">Não Há Cliente Cadastrado</h3>
             <% }%>
-            <form id="formCliente" style="display: none;" class="centro" method="GET" action="adicionarCliente">
-
+            
+            <form id="formCliente" style="display: none;" class="centro" method="GET" action="adicionarCliente" onsubmit="return validar()">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Nome:</span>
                     <input type="text" name="txtNome" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">

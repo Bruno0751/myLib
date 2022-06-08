@@ -22,6 +22,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServPricipal</servlet-name>
+        <url-pattern>/web</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServPricipal</servlet-name>
         <url-pattern>/adicionarCliente</url-pattern>
     </servlet-mapping>
     <session-config>

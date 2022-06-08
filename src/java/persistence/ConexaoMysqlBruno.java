@@ -16,19 +16,19 @@ import javax.swing.JOptionPane;
 public class ConexaoMysqlBruno {
 
     //private static final String DRIVE = "com.mysql.jdbc.Driver";
-    private static final String DRIVE = "com.mysql.cj.jdbc.Driver"; //8.0.22
+    private static final String DRIVEME = "com.mysql.cj.jdbc.Driver"; //8.0.22
     //private static final String URL = "jdbc:mysql://10.1.0.201:3306/test?useTimezone=true&serverTimezone=UTC";
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/servlet?useTimezone=true&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASSWORD = "9320";
+    private static final String URLME = "jdbc:mysql://127.0.0.1:3306/servlet?useTimezone=true&serverTimezone=UTC";
+    private static final String USERME = "root";
+    private static final String PASSWORDME = "9320";
 
     public static Connection getConexao() throws SQLException, UnknownHostException {
         String ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
         Connection connection = null;
         try {
             if (ipDaMaquina.contains("192.168.")) {
-                Class.forName(DRIVE);
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                Class.forName(DRIVEME);
+                connection = DriverManager.getConnection(URLME, USERME, PASSWORDME);
                 System.out.println("ConexaoMysqlBruno");
             }
         } catch (SQLException e) {
@@ -36,7 +36,7 @@ public class ConexaoMysqlBruno {
                 JOptionPane.showMessageDialog(null, "erro de conexão\n" + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
             }
             System.out.println("erro de conexão\n" + e.getMessage());
-            e.printStackTrace();
+            System.exit(0);
         } finally {
             return connection;
         }

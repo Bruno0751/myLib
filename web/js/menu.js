@@ -40,7 +40,14 @@ menu = "<nav class='navbar navbar-expand-lg bg-light'>\n\
                                 Frame Work\n\
                             </a>\n\
                         </li>\n\
-                        <li><a class='nav-link active' aria-current='page' href='wave.html'>Wave</a></li>\n\
+                        <li class='nav-item'>\n\
+                            <a class='nav-link active' aria-current='page' href='https://www.devmedia.com.br/html-meta-tags-entendendo-o-uso-de-meta-tags/30328' target='_blank'>\n\
+                                <i class='bi bi-bootstrap-fill'>\n\
+                                    <img src='frameWork/code-slash.svg' alt='IMG'>\n\
+                                </i>\n\
+                                Meta tag\n\
+                            </a>\n\
+                        </li>\n\
                     </ul>\n\
                 </div>\n\
             </div>\n\

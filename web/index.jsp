@@ -9,11 +9,14 @@
 <%
     String acesso = "";
     acesso = request.getParameter("acesso");
-    boolean casa = false, autorizado = false;
+    boolean casa = false, autorizado = false, empresa = false;
     String ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
+//    ipDaMaquina = "10.1.0.255";
 //    String nomeDaMaquina = InetAddress.getLocalHost().getHostName();
     if (ipDaMaquina.contains("192.168.")) {
         casa = true;
+    } else if (ipDaMaquina.equals("10.1.0.255")) {
+        empresa = true;
     }
 %>
 <!DOCTYPE html>
@@ -21,7 +24,7 @@
     <head>
         <script type="text/javascript" src="js/head.js"></script>
     </head>
-    <body>
+    <body onload="carregarPagina()">
         <header>
             <% if (autorizado) {%>
             <button type="button" class="btn btn-link">Senhas</button>
@@ -32,8 +35,6 @@
 
         <script type="text/javascript" src="js/menu.js"></script>
         <button type="button" onClick="carregarPagina('vazio')" class="btn btn-link">Bootstrap</button>
-
-        <hr>
 
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -56,8 +57,6 @@
             </div>
         </nav>
 
-        <hr>
-
         <section>
             <h2 style="display: none;">Index</h2>
 
@@ -65,20 +64,14 @@
             <% if (acesso != null) { %>
             <div><button type="button" class="btn btn-outline-primary" onClick="requisitar('sair')">SAIR</button></div>
             <% } %>
-            <hr>
 
+            <button type="button" class="btn btn-outline-primary" onClick="requisitar('prj')">Projeto</button>
             <% if (casa) {%>
-            <!--<div class="centro">-->
-            <div>
-                <button type="button" class="btn btn-outline-primary" onClick="requisitar('prj')">Projeto</button>
-                
-                <button type="button" class="btn btn-outline-secondary" onClick="requisitar('msc')">Musicas</button>
-                <button type="button" class="btn btn-outline-primary" onClick="requisitar('minhasMusicas')">Minhas</button>
-                <button type="button" class="btn btn-outline-secondary" onClick="requisitar('money')">Money</button>
-            </div>
-            <!--</div>-->
+            <button type="button" class="btn btn-outline-secondary" onClick="requisitar('msc')">Musicas</button>
+            <button type="button" class="btn btn-outline-primary" onClick="requisitar('minhasMusicas')">Minhas</button>
+            <button type="button" class="btn btn-outline-secondary" onClick="requisitar('money')">Money</button>
+            <button type="button" class="btn btn-outline-primary" onClick="requisitar('web')">Web</button>
             <% }%>
-            <hr>
 
             <% if (casa) {%>
             <div class="grid">
@@ -103,14 +96,18 @@
                 <a href="https://github.com/" target="_blank">
                     <img src="images/gitHub.png" alt="GIT HUB" title="GIT HUB" class="g-col-2" width="10%" height="100px;">
                 </a>
+            </div>           
+            <%}%>
+
+            <% if (empresa) {%>
+            <div class="grid">
+                <a href="https://github.com/" target="_blank">
+                    <img src="images/gitHub.png" alt="GIT HUB" title="GIT HUB" class="g-col-2" width="10%" height="100px;">
+                </a>
             </div>
-
-            <hr>
-
             <%}%>
 
         </section>
         <script type="text/javascript" src="js/footer.js"></script>
-        <script type="text/javascript" src="js/requests.js"></script>
     </body>
 </html>

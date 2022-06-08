@@ -14,7 +14,7 @@
     List<AuxModel> lista = null;
     boolean casa = false;
     if (ipDaMaquina.contains("192.168.")) {
-        lista = AuxDao.findAux();
+        lista = AuxDao.findAux(ipDaMaquina);
         casa = true;
     }
 %>

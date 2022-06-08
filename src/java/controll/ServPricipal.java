@@ -5,6 +5,8 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -25,6 +27,12 @@ import persistence.ConexaoMysqlBruno;
  */
 public class ServPricipal extends HttpServlet {
 
+    private String ipDaMaquina;
+
+    public ServPricipal() throws UnknownHostException {
+        this.ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -44,10 +52,12 @@ public class ServPricipal extends HttpServlet {
             String req = request.getRequestURI();
             System.out.println(req);
             switch (req) {
+
                 case "/myLib/prj":
                 case "/myLib/msc":
                 case "/myLib/minhasMusicas":
                 case "/myLib/money":
+                case "/myLib/web":
                     this.requisitar(request);
                     response.sendRedirect("index.jsp");
                     break;
@@ -127,17 +137,23 @@ public class ServPricipal extends HttpServlet {
     }// </editor-fold>
 
     private void requisitar(HttpServletRequest request) throws IOException {
-        if (request.getRequestURI().equals("/myLib/prj")) {
-            Desktop.getDesktop().open(new File("D:\\PrjDesktopJava\\myLib"));
-        }
-        if (request.getRequestURI().equals("/myLib/money")) {
-            Desktop.getDesktop().open(new File("D:\\Documents\\MONEY"));
-        }
-        if (request.getRequestURI().equals("/myLib/msc")) {
-            Desktop.getDesktop().open(new File("D:\\Music"));
-        }
-        if (request.getRequestURI().equals("/myLib/minhasMusicas")) {
-            Desktop.getDesktop().open(new File("D:\\minhas_musicas"));
+        if (this.ipDaMaquina.contains("192.168.")) {
+            if (request.getRequestURI().equals("/myLib/prj")) {
+                Desktop.getDesktop().open(new File("D:\\PrjDesktopJava\\myLib"));
+            }
+            if (request.getRequestURI().equals("/myLib/money")) {
+                Desktop.getDesktop().open(new File("D:\\Documents\\MONEY"));
+            }
+            if (request.getRequestURI().equals("/myLib/msc")) {
+                Desktop.getDesktop().open(new File("D:\\Music"));
+            }
+            if (request.getRequestURI().equals("/myLib/minhasMusicas")) {
+                Desktop.getDesktop().open(new File("D:\\minhas_musicas"));
+            }
+            if (request.getRequestURI().equals("/myLib/web")) {
+                Desktop.getDesktop().open(new File("C:\\xampp\\htdocs\\server"));
+            }
+        } else if (this.ipDaMaquina.equals("10.1.0.255")) {
         }
     }
 
@@ -153,7 +169,7 @@ public class ServPricipal extends HttpServlet {
         }
         obj.setTipo(Byte.parseByte(request.getParameter("slTipo")));
         System.out.println(obj.toString());
-        ClienteDao.insertCliente(obj);
+        ClienteDao.insertCliente(obj, this.ipDaMaquina);
     }
 
 }

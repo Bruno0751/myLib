@@ -1,5 +1,6 @@
 package dao;
 
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import persistence.ConexaoMysqlBruno;
+// TESTE UTIL
+import persistence.ConexaoMysql;
 
 /**
  *
@@ -21,15 +24,19 @@ public class ClienteDao {
 
     private static final String FINDCLIENTE = "SELECT * FROM servlet.cliente_servlet";
 
-    public static List<Cliente> findClente() throws SQLException, Exception {
+    public static List<Cliente> findClente(String ipDaMaquina) throws SQLException, UnknownHostException {
         ResultSet rs = null;
         Statement st = null;
         List<Cliente> lista = null;
-        Connection conexaoMysqlBruno = null;
+        Connection conexaoMysql = null;
+        lista = new ArrayList<>();
         try {
-            conexaoMysqlBruno = ConexaoMysqlBruno.getConexao();
-            lista = new ArrayList<>();
-            st = conexaoMysqlBruno.createStatement();
+            if (ipDaMaquina.contains("192.168.")) {
+                conexaoMysql = ConexaoMysqlBruno.getConexao();
+//                conexaoMysql = ConexaoMysql.conectar();
+            } else if (ipDaMaquina.equals("10.1.0.255")) {
+            }
+            st = conexaoMysql.createStatement();
             rs = st.executeQuery(FINDCLIENTE);
             while (rs.next()) {
                 Cliente obj = new Cliente();
@@ -47,15 +54,14 @@ public class ClienteDao {
                 obj.setHoraRegistro(rs.getTime("hora_registro"));
                 lista.add(obj);
             }
-        } catch (Exception e) {
-            String erro = "ERRO AO BUSCAR CLIENTE";
-            System.out.println(erro);
-            JOptionPane.showMessageDialog(null, erro, "ERRO", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-            throw new Exception(erro);
+        } catch (SQLException e) {
+            if (ipDaMaquina.contains("192.168.")) {
+                JOptionPane.showMessageDialog(null, "ERRO AO BUSCAR CLIENTE", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+            System.out.println("ERRO AO BUSCAR CLIENTE");
         } finally {
-            if (conexaoMysqlBruno != null) {
-                conexaoMysqlBruno.close();
+            if (conexaoMysql != null) {
+                conexaoMysql.close();
             }
             st.close();
             rs.close();
@@ -63,28 +69,29 @@ public class ClienteDao {
         return lista;
     }
 
-    public static void insertCliente(Cliente obj) throws SQLException, Exception {
+    public static void insertCliente(Cliente obj, String ipDaMaquina) throws SQLException, UnknownHostException {
         PreparedStatement pst = null;
-        Connection conexaoMysqlBruno = null;
+        Connection conexaoMysql = null;
         try {
-            conexaoMysqlBruno = ConexaoMysqlBruno.getConexao();
-            
-            pst = conexaoMysqlBruno.prepareStatement("INSERT INTO servlet.cliente_servlet VALUES(NULL, ?, ?, ?, ?, NOW(), NOW());");
+            if (ipDaMaquina.contains("192.168.")) {
+                conexaoMysql = ConexaoMysqlBruno.getConexao();
+                pst = conexaoMysql.prepareStatement("INSERT INTO servlet.cliente_servlet VALUES(NULL, ?, ?, ?, ?, NOW(), NOW());");
+            } else if (ipDaMaquina.equals("10.1.0.255")) {
+            }
             pst.setString(1, obj.getNome());
             pst.setInt(2, obj.getIdade());
             pst.setBoolean(3, obj.isEmail());
             pst.setByte(4, obj.getTipo());
             pst.executeUpdate();
-            
-        } catch (Exception e) {
-            String erro = "ERRO AO INSERIR CLIENTE";
-            System.out.println(erro);
-            JOptionPane.showMessageDialog(null, erro, "ERRO", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-            throw new Exception(erro);
+
+        } catch (SQLException e) {
+            if (ipDaMaquina.contains("192.168.")) {
+                JOptionPane.showMessageDialog(null, "ERRO AO INSERIR CLIENTE", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+            System.out.println("ERRO AO INSERIR CLIENTE");
         } finally {
-            if (conexaoMysqlBruno != null) {
-                conexaoMysqlBruno.close();
+            if (conexaoMysql != null) {
+                conexaoMysql.close();
             }
             pst.close();
         }

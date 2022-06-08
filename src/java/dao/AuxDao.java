@@ -1,5 +1,6 @@
 package dao;
 
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,17 +18,20 @@ import persistence.ConexaoMysqlBruno;
  * @since 24/04/2022
  */
 public class AuxDao {
-    
+
     private static final String FINDAUX = "SELECT * FROM servlet.tipo_servlet";
-    
-    public static List<AuxModel> findAux () throws SQLException, Exception {
+
+    public static List<AuxModel> findAux(String ipDaMaquina) throws SQLException, UnknownHostException {
         ResultSet rs = null;
         Statement st = null;
         List<AuxModel> lista = null;
         Connection conexaoMysqlBruno = null;
+        lista = new ArrayList<>();
         try {
-            conexaoMysqlBruno = ConexaoMysqlBruno.getConexao();
-            lista = new ArrayList<>();
+            if (ipDaMaquina.contains("192.168.")) {
+                conexaoMysqlBruno = ConexaoMysqlBruno.getConexao();
+            } else if (ipDaMaquina.equals("10.1.0.255")) {
+            }
             st = conexaoMysqlBruno.createStatement();
             rs = st.executeQuery(FINDAUX);
             while (rs.next()) {
@@ -44,12 +48,11 @@ public class AuxDao {
                 obj.setHoraRegistro(rs.getTime("hora_registro"));
                 lista.add(obj);
             }
-        } catch (Exception e) {
-            String erro = "ERRO AO BUSCAR CLIENTE";
-            System.out.println(erro);
-            JOptionPane.showMessageDialog(null, erro, "ERRO", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-            throw new Exception(erro);
+        } catch (SQLException e) {
+            if (ipDaMaquina.contains("192.168.")) {
+                JOptionPane.showMessageDialog(null, "ERRO AO BUSCAR CLIENTE", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+            System.out.println("ERRO AO BUSCAR CLIENTE");
         } finally {
             if (conexaoMysqlBruno != null) {
                 conexaoMysqlBruno.close();
