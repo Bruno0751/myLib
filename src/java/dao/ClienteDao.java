@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import model.Cliente;
 import persistence.ConexaoMysqlBruno;
 // TESTE UTIL
-import persistence.ConexaoMysql;
+//import persistence.ConexaoMysql;
 
 /**
  *
