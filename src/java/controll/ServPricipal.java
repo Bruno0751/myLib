@@ -65,6 +65,10 @@ public class ServPricipal extends HttpServlet {
                     this.insertCliente(request);
                     response.sendRedirect("loader.jsp");
                     break;
+//                case "/myLib/alterar":
+//                    this.ativarOUInativarAux(request);
+//                    response.sendRedirect("loader.jsp");
+//                    break;
                 case "/teste":
                     out.println("<!DOCTYPE html>");
                     out.println("<html>");
@@ -170,6 +174,10 @@ public class ServPricipal extends HttpServlet {
         obj.setTipo(Byte.parseByte(request.getParameter("slTipo")));
         System.out.println(obj.toString());
         ClienteDao.insertCliente(obj, this.ipDaMaquina);
+    }
+
+    private void ativarOUInativarAux(HttpServletRequest request) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

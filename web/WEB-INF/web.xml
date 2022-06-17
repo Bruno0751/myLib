@@ -18,6 +18,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServPricipal</servlet-name>
+        <url-pattern>/alterar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServPricipal</servlet-name>
         <url-pattern>/minhasMusicas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

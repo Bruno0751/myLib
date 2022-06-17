@@ -77,6 +77,9 @@ function requisitar(valor) {
     if (valor === "money") {
         window.location.href = valor;
     }
+    if (valor === "alterar") {
+        alert(valor);
+    }
     if (valor === "insertCliente") {
         let btnInserCliente = document.querySelector("button#btnInserCliente");
         let btnVoltarCliente = document.querySelector("button#btnVoltarCliente");

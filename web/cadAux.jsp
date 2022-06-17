@@ -54,7 +54,11 @@
                     <tr>
                         <td scope="row"><%= (lista.get(i).getIdTipo())%></td>
                         <td scope="row"><%= (lista.get(i).getDescricao())%></td>
-                        <td scope="row"><%= (lista.get(i).getAtivo())%></td>
+                        <% if ((lista.get(i).getAtivo()).equals("SIM")) { %>
+                        <td scope="row"><input type="checkbox" checked onClick="requisitar(this.value)"></td>
+                        <% } else {%>
+                        <td scope="row"><input type="checkbox" onClick="requisitar(this.value)"></td>
+                        <% }%>
                         <td scope="row"><%= (lista.get(i).getDataRegistro())%></td>
                         <td scope="row"><%= (lista.get(i).getHoraRegistro())%></td>
                     </tr>
@@ -86,6 +90,5 @@
                         </form>-->
         </section>
         <script type="text/javascript" src="js/footer.js"></script>
-        <script type="text/javascript" src="js/requests.js"></script>
     </body>
 </html>

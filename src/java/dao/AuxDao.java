@@ -2,6 +2,7 @@ package dao;
 
 import java.net.UnknownHostException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -62,5 +63,28 @@ public class AuxDao {
             rs.close();
         }
         return lista;
+    }
+    
+    public static void ativarOUInativarAux(String ipDaMaquina) throws SQLException, UnknownHostException {
+        PreparedStatement pst = null;
+        Connection conexaoMysqlBruno = null;
+        try {
+            if (ipDaMaquina.contains("192.168.")) {
+                conexaoMysqlBruno = ConexaoMysqlBruno.getConexao();
+            } else if (ipDaMaquina.equals("10.1.0.255")) {
+            }
+            pst = conexaoMysqlBruno.prepareStatement("UPDATE servlet.tipo_servlet SET = ? WHERE id_tipo = ?;");
+        } catch (SQLException e) {
+            if (ipDaMaquina.contains("192.168.")) {
+                JOptionPane.showMessageDialog(null, "ERRO AO BUSCAR CLIENTE", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+            System.out.println("ERRO AO BUSCAR CLIENTE");
+        } finally {
+            if (conexaoMysqlBruno != null) {
+                conexaoMysqlBruno.close();
+                System.out.println("fechouConexaoMysqlBruno");
+            }
+            pst.close();
+        }
     }
 }

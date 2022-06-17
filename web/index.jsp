@@ -106,6 +106,18 @@
                 </a>
             </div>
             <%}%>
+            
+            <div class="grid">
+                <a href="https://portalinvestidor.tesourodireto.com.br/" target="_blank">
+                    <img src="images/tesoroDireto.png" style="clear: both;" class="g-col-2"alt="TESORO DIRETO" title="TESORO DIRETO" width="10%" height="100px;">
+                </a>
+                <a href="https://www.nuinvest.com.br/" target="_blank">
+                    <img src="images/nuInvest.png" style="clear: both;" class="g-col-2"alt="NU INVET" title="NU INVET" width="10%" height="100px;">
+                </a>
+                <a href="https://www.rico.com.vc/login/" target="_blank">
+                    <img src="images/rico.png" style="clear: both;" class="g-col-2"alt="RICO" title="RICO" width="10%" height="100px;">
+                </a>
+            </div>
 
         </section>
         <script type="text/javascript" src="js/footer.js"></script>
