@@ -8,18 +8,10 @@ ul, ol {
 }
 li { display: inline; margin: 0 1%; }
 a {
-    color: #d5d5d5;
+    color: #000000;
     font-size: 22px;
     text-align: justify;
     text-decoration: none;
-}
-section {
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
-    border-radius: 9px;
-    padding: 38px 4%;
-    margin: 0;
 }
 .centro, input { margin: 0 auto; text-align: center; }
 div {
@@ -103,4 +95,13 @@ table, th, tr, td {
     border-collapse: collapse;
 }
 table { width: 96%; }
-
+/*smartphone no formato retrato*/
+@media screen and (max-width: 360px){}
+/*smartphone no paisagem*/
+@media screen and (max-width: 480px){}
+/*tablets no formato retrato*/
+@media screen and (max-width: 768px){}
+/*tablets no formato paisagem e alguns monitores mais antigos*/
+@media screen and (max-width: 960px){}
+/*desktop com monitores wide screen*/
+@media screen and (max-width: 1200px){}

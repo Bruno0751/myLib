@@ -117,6 +117,9 @@
                 <a href="https://www.rico.com.vc/login/" target="_blank">
                     <img src="images/rico.png" style="clear: both;" class="g-col-2"alt="RICO" title="RICO" width="10%" height="100px;">
                 </a>
+                <a href="https://www.xpi.com.br/" target="_blank">
+                    <img src="images/xp.png" style="clear: both;" class="g-col-2"alt="XP INVEST" title="XP INVEST" width="10%" height="100px;">
+                </a>
             </div>
 
         </section>
