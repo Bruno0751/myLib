@@ -84,6 +84,9 @@
                 <a href="https://www.youtube.com/" target="_blank">
                     <img src="images/youtube.png" alt="YOUTUBE" title="YOUTUBE" class="g-col-2" width="10%" height="100px;">
                 </a>
+                <a href=https://www.netflix.com/browse" target="_blank">
+                    <img src="images/" alt="NETFLIX" title="NETFLIX" class="g-col-2" width="10%" height="100px;">
+                </a>
                 <a href="https://www.disneyplus.com" target="_blank">
                     <img src="images/disneyPlus.png" alt="DISNEY" title="DISNEY" class="g-col-2k" width="10%" height="100px;">
                 </a>
